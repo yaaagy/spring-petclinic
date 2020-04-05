@@ -37,7 +37,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                echo '=== Pushing Petclinic Docker Image ==='
+                echo 'Pushing Petclinic Docker Image'
                 script {
                     GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
                     SHORT_COMMIT = "${GIT_COMMIT_HASH[0..7]}"
@@ -51,8 +51,8 @@ pipeline {
         stage('Remove local images') {
             steps {
                 echo '=== Delete the local docker images ==='
-                sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:latest || :")
-                sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:$SHORT_COMMIT || :")
+                sh("docker rmi -f yaaagy/parth-petclinic:latest || :")
+                sh("docker rmi -f yaaagy/parth-petclinic:$SHORT_COMMIT || :")
             }
         }
     }
